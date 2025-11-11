@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎬 Compra de Boletos - Cine</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #000000, #1a1a1a, #3b0a45);
+  background-size: 300% 300%;
+  animation: fondo 12s ease infinite;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+@keyframes fondo {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+h1 {
+  font-size: 2.5rem;
+  text-shadow: 0 0 15px #ff0040, 0 0 25px #ff0040;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+.cartelera {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+.pelicula {
+  background: rgba(0,0,0,0.6);
+  border: 2px solid #ff0040;
+  border-radius: 15px;
+  width: 220px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 0 20px #ff0040;
+  transition: transform 0.3s;
+}
+.pelicula:hover {
+  transform: scale(1.05);
+}
+.pelicula img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.pelicula h3 {
+  margin: 5px 0;
+  font-size: 1.1rem;
+  color: #00ff90;
+}
+.pelicula p {
+  font-size: 0.9rem;
+  color: #ff7db5;
+}
+
+/* Formulario */
+form {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #ff0040;
+  border-radius: 20px;
+  padding: 30px 40px;
+  width: 350px;
+  box-shadow: 0 0 30px #ff0040;
+  animation: fadeIn 1.5s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #ff7db5;
+}
+input, select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 18px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1e1e1e;
+  color: #fff;
+  box-shadow: inset 0 0 10px #ff0040;
+  transition: 0.3s;
+}
+input:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 15px #ff0040;
+}
+input[type="submit"] {
+  background: #ff0040;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+}
+input[type="submit"]:hover {
+  background: #ff2f6a;
+  box-shadow: 0 0 20px #ff0040;
+  transform: scale(1.05);
+}
+#campo_ninos, #opcion_ninos {
+  transition: all 0.5s ease;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+#campo_ninos.mostrar, #opcion_ninos.mostrar {
+  opacity: 1;
+  max-height: 200px;
+}
+footer {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #ff7db5;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px #ff0040;
+}
+.error {
+  color: #ff2f6a;
+  font-size: 0.9rem;
+  margin-top: -12px;
+  margin-bottom: 10px;
+}
+#precio_total {
+  font-weight: bold;
+  margin-bottom: 18px;
+  color: #00ff90;
+}
+
+/* Botones extra */
+.botones-registro {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+.botones-registro input[type="submit"] {
+  width: 120px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.botones-registro input[type="submit"]:hover {
+  transform: scale(1.05);
+}
+</style>
+</head>
+<body>
+
+<h1>🎬 Cartelera</h1>
+<div class="cartelera">
+  <div class="pelicula">
+    <img src="img/con.jpg" alt="El conjuro: Últimos ritos">
+    <h3>El conjuro: Últimos ritos</h3>
+    <p>Investigadores paranormales enfrentan su caso más terrorífico, con fuerzas sobrenaturales que ponen en riesgo sus vidas.</p>
+  </div>
+  <div class="pelicula">
+    <img src="img/tipo.jpg" alt="Los tipos malos 2">
+    <h3>Los tipos malos 2</h3>
+    <p>Un grupo de criminales torpes regresa con más aventuras y enredos que pondrán a prueba su amistad.</p>
+  </div>
+  <div class="pelicula">
+    <img src="img/ball.jpg" alt="Una batalla tras otra">
+    <h3>Una batalla tras otra</h3>
+    <p>El conflicto nunca termina y cada enfrentamiento revela secretos y alianzas inesperadas.</p>
+  </div>
+  <div class="pelicula">
+    <img src="img/mai.jpg" alt="El payaso del maíz">
+    <h3>El payaso del maíz</h3>
+    <p>Un pueblo es aterrorizado por un siniestro payaso que acecha a sus habitantes, generando terror absoluto.</p>
+  </div>
+  <div class="pelicula">
+    <img src="img/ex.jpg" alt="Los extraños: Capítulo 2">
+    <h3>Los extraños: Capítulo 2</h3>
+    <p>Una familia es perseguida por enmascarados en su propia casa, mientras se revelan nuevos misterios.</p>
+  </div>
+  <div class="pelicula">
+    <img src="img/cam.jpg" alt="Camina o muere">
+    <h3>Camina o muere</h3>
+    <p>Participantes deben superar desafíos extremos en un juego de vida o muerte donde cada paso cuenta.</p>
+  </div>
+  <div class="pelicula">
+    <img src="img/aztec.jpg" alt="Batman Azteca: Choque de imperios">
+    <h3>Batman Azteca: Choque de imperios</h3>
+    <p>Batman enfrenta enemigos en la época azteca, donde alianzas y traiciones cambian el destino de los imperios.</p>
+  </div>
+  <div class="pelicula">
+    <img src="img/neg.jpg" alt="Teléfono negro 2">
+    <h3>Teléfono negro 2</h3>
+    <p>Un niño secuestrado intenta escapar de su captor con ayuda de un teléfono que conecta con el pasado.</p>
+  </div>
+  <div class="pelicula">
+    <img src="img/bru.jpg" alt="Cacería de brujas">
+    <h3>Cacería de brujas</h3>
+    <p>En un pueblo donde las acusaciones vuelan, la caza de brujas desata miedo y secretos ocultos.</p>
+  </div>
+  <div class="pelicula">
+    <img src="img/me.jpg" alt="Un mundo mejor">
+    <h3>Un mundo mejor</h3>
+    <p>Una historia inspiradora sobre cómo pequeños actos pueden transformar la vida de muchos y cambiar el mundo.</p>
+  </div>
+</div>
+
+</div>
+
+<h1>🎬 Compra de Boletos - Cine</h1>
+
+<form id="formulario" action="ticket.php" method="POST">
+  <label>Nombre:</label>
+  <input type="text" name="nombre" required>
+
+  <label>Película:</label>
+  <select name="pelicula" required>
+    <option value="El conjuro: Últimos ritos">El conjuro: Últimos ritos</option>
+    <option value="Los tipos malos 2">Los tipos malos 2</option>
+    <option value="Una batalla tras otra">Una batalla tras otra</option>
+    <option value="El payaso del maíz">El payaso del maíz</option>
+    <option value="Los extraños: Capítulo 2">Los extraños: Capítulo 2</option>
+    <option value="Camina o muere">Camina o muere</option>
+    <option value="Batman Azteca: Choque de imperios">Batman Azteca: Choque de imperios</option>
+    <option value="Teléfono negro 2">Teléfono negro 2</option>
+    <option value="Cacería de brujas">Cacería de brujas</option>
+    <option value="Un mundo mejor">Un mundo mejor</option>
+  </select>
+
+  <label>Sala y Tipo de boleto:</label>
+  <select name="tipo" id="sala_tipo" required>
+    <option value="">-- Seleccione Sala --</option>
+    <option value="Normal">Normal - $75</option>
+    <option value="3D">3D - $110</option>
+    <option value="VIP">VIP - $145</option>
+  </select>
+
+  <label>No. de boletos:</label>
+  <input type="number" name="boletos" id="boletos" value="1" required>
+
+  <div id="opcion_ninos">
+    <label>¿Lleva niños?</label>
+    <select id="select_ninos" name="ninos_opcion">
+      <option value="no">No</option>
+      <option value="si">Sí</option>
+    </select>
+  </div>
+
+  <div id="campo_ninos">
+    <label>Cantidad de niños:</label>
+    <input type="number" name="ninos" id="ninos" min="0" value="0">
+    <div id="error_ninos" class="error" style="display:none;">
+      La cantidad de niños debe ser menor al número de boletos.
+    </div>
+  </div>
+
+  <div id="precio_total">Precio total: $0.00</div>
+
+  <input type="submit" value="🎟️ Generar Ticket">
+</form>
+
+  <form action="consultar.php" method="GET" style="display:inline;">
+    <input type="submit" value="Consultar" style="background:#ff7db5; color:#000;">
+  </form>
+  <form action="eliminar.php" method="POST" style="display:inline;">
+    <input type="submit" value="Eliminar" style="background:#ff0040; color:#fff;">
+  </form>
+</div>
+
+<footer>
+  ✦ Depeche Mode: M ✦ Inspirado en los tonos del alma y la oscuridad elegante ✦
+</footer>
+
+<script>
+const boletosInput = document.getElementById('boletos');
+const opcionNinos = document.getElementById('opcion_ninos');
+const selectNinos = document.getElementById('select_ninos');
+const campoNinos = document.getElementById('campo_ninos');
+const cantidadNinosInput = document.getElementById('ninos');
+const errorNinos = document.getElementById('error_ninos');
+const salaTipoSelect = document.getElementById('sala_tipo');
+const precioDiv = document.getElementById('precio_total');
+const formulario = document.getElementById('formulario');
+
+const precios = { "Normal": 75, "3D": 110, "VIP": 145 };
+
+boletosInput.addEventListener('input', () => {
+  let boletos = parseInt(boletosInput.value) || 1; 
+  boletosInput.value = boletos;
+
+  if (boletos >= 2) {
+    opcionNinos.classList.add('mostrar');
+  } else {
+    opcionNinos.classList.remove('mostrar');
+    campoNinos.classList.remove('mostrar');
+    selectNinos.value = "no";
+    cantidadNinosInput.value = 0;
+    errorNinos.style.display = 'none';
+  }
+
+  actualizarPrecio();
+});
+
+selectNinos.addEventListener('change', () => {
+  if (selectNinos.value === "si") {
+    campoNinos.classList.add('mostrar');
+    cantidadNinosInput.value = 1;
+  } else {
+    campoNinos.classList.remove('mostrar');
+    cantidadNinosInput.value = 0;
+    errorNinos.style.display = 'none';
+  }
+  actualizarPrecio();
+});
+
+function actualizarPrecio() {
+  const boletos = parseInt(boletosInput.value) || 1;
+  let ninos = parseInt(cantidadNinosInput.value) || 0;
+  const tipo = salaTipoSelect.value;
+
+  if (ninos >= boletos) {
+    ninos = boletos > 1 ? boletos - 1 : 0;
+    cantidadNinosInput.value = ninos;
+  }
+
+  let total = 0;
+  if (tipo && boletos > 0) {
+    total = boletos * precios[tipo];
+    if (ninos > 0) total -= ninos * precios[tipo] * 0.15;
+  }
+
+  precioDiv.textContent = "Precio total: $" + total.toFixed(2);
+}
+
+salaTipoSelect.addEventListener('change', actualizarPrecio);
+cantidadNinosInput.addEventListener('input', actualizarPrecio);
+
+formulario.addEventListener('submit', (e) => {
+  const boletos = parseInt(boletosInput.value) || 1;
+  const ninos = parseInt(cantidadNinosInput.value) || 0;
+
+  if (selectNinos.value === "si" && boletos >= 2) {
+    if (ninos >= boletos) {
+      errorNinos.style.display = 'block';
+      e.preventDefault();
+      return;
+    }
+  }
+
+  errorNinos.style.display = 'none';
+});
+</script>
+
+</body>
+</html>
+
